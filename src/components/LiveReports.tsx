@@ -1,4 +1,5 @@
 import AnimatedWaveText from './AnimatedWaveText'
+import Image from 'next/image'
 
 const LiveReports = () => {
   const companies = [
@@ -41,9 +42,11 @@ const LiveReports = () => {
                 >
                   <div className="flex items-center space-x-1 sm:space-x-1.5 md:space-x-2">
                     <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 flex items-center justify-center overflow-hidden">
-                      <img 
+                      <Image 
                         src={company.logo} 
                         alt={`${company.name} logo`}
+                        width={28}
+                        height={28}
                         className="w-full h-full object-contain"
                       />
                     </div>

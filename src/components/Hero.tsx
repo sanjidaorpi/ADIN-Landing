@@ -1,8 +1,9 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import AnimatedWaveText from './AnimatedWaveText'
+import Image from 'next/image'
 
 const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -12,13 +13,13 @@ const Hero = () => {
   const [centerWordOpacity, setCenterWordOpacity] = useState(1)
   const wordsContainerRef = useRef<HTMLDivElement>(null)
 
-  const keywords = [
+  const keywords = useMemo(() => [
     { text: '3d printing', color: 'text-[#FFD17A]' },
     { text: 'blockchain', color: 'text-[#5ED890]' },
     { text: 'biotech', color: 'text-[#A97DF5]' },
     { text: 'creative tools', color: 'text-[#FF9066]' },
     { text: 'medical tools', color: 'text-[#FFD17A]' },
-  ]
+  ], [])
 
   // Rotate activeIndex every 2 seconds with fade in/out animation
   useEffect(() => {
@@ -122,14 +123,18 @@ const Hero = () => {
         {/* Logo Container */}
         <div className="flex-shrink-0 p-1.5 sm:p-1 md:p-1">
           <div className="relative w-8 h-6 sm:w-10 sm:h-8 md:w-12 md:h-10 lg:w-14 lg:h-11 xl:w-16 xl:h-12">
-            <img
+            <Image
               src="/images/adin_logo.svg"
               alt="ADIN Logo"
+              width={64}
+              height={48}
               className="w-full h-full object-contain"
             />
-            <img
+            <Image
               src="/images/play_button.svg"
               alt="Play Icon"
+              width={20}
+              height={20}
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 object-contain"
             />
           </div>

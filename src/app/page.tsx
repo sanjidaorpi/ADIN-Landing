@@ -2,6 +2,7 @@ import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import LiveReports from '@/components/LiveReports'
 import AnimatedScrollArrow from '@/components/AnimatedScrollArrow'
+import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -11,7 +12,7 @@ export default function Home() {
       </div>
       <Hero />
       <div className="relative flex-1 flex flex-col justify-end">
-        <img src="/images/gradient.svg" alt="Gradient" className="absolute bottom-0 left-0 w-full h-auto z-0" />
+        <Image src="/images/gradient.svg" alt="Gradient" width={1920} height={400} className="absolute bottom-0 left-0 w-full h-auto z-0" />
         <div className="flex justify-end pr-8 relative z-10 pb-4 sm:pt-0 sm:pb-0">
           <LiveReports />
         </div>
