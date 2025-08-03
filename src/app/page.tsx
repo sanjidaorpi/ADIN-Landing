@@ -13,7 +13,7 @@ export default function Home() {
       <Hero />
       <div className="relative flex-1 flex flex-col justify-end">
         <Image src="/images/gradient.svg" alt="Gradient" width={1920} height={400} className="absolute bottom-0 left-0 w-full h-auto z-0" />
-        <div className="flex justify-end pr-8 relative z-10 pb-4 sm:pt-0 sm:pb-0">
+        <div className="flex justify-end pr-8 relative z-10 pb-4 sm:pt-0 sm:pb-0 pt-8 sm:pt-0">
           <LiveReports />
         </div>
         <div className="flex justify-center relative z-10 pb-4 sm:pb-0">

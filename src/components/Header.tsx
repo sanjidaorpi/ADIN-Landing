@@ -40,12 +40,12 @@ const Header = () => {
       </div>
 
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex items-center space-x-1 sm:space-x-2 md:space-x-3 lg:space-x-4 mx-2 sm:mx-4 md:mx-6 lg:mx-8">
+      <nav className="hidden md:flex items-center space-x-0 mx-0.5 sm:mx-1 md:mx-2 lg:mx-4">
         {navItems.map((item) => (
           <button
             key={item.name}
             onClick={() => setActiveTab(item.name)}
-            className={`flex items-center space-x-1 px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-2.5 lg:py-3 rounded-full transition-colors border whitespace-nowrap text-xs sm:text-sm ${
+            className={`flex items-center space-x-1 px-1.5 sm:px-2 md:px-3 lg:px-4 py-1.5 sm:py-2 md:py-2.5 lg:py-3 rounded-full transition-colors border whitespace-nowrap text-xs sm:text-sm ${
               activeTab === item.name
                 ? 'border-adin-purple text-adin-purple'
                 : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
@@ -61,7 +61,7 @@ const Header = () => {
       </nav>
 
       {/* Desktop User Actions */}
-      <div className="hidden md:flex items-center space-x-1 sm:space-x-2 md:space-x-4 lg:space-x-6 whitespace-nowrap">
+      <div className="hidden md:flex items-center space-x-0 whitespace-nowrap">
         <button className="text-gray-600 hover:text-gray-900 font-medium mr-1 sm:mr-2 md:mr-3 lg:mr-4 text-xs sm:text-sm">
           Log In
         </button>

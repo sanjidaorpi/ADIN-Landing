@@ -37,7 +37,7 @@ const Hero = () => {
     return () => clearInterval(interval)
   }, [keywords.length])
 
-  useEffect(() => {
+  const calculateMaxWidth = () => {
     if (!wordsContainerRef.current) return;
 
     const tempSpan = document.createElement('span');
@@ -57,12 +57,25 @@ const Hero = () => {
 
     // Add gap space (space-x-12 = 3rem = 48px) for side spacing consistency
     setMaxWidth(widest + 20); // Add extra padding for longer words
+  };
+
+  useEffect(() => {
+    calculateMaxWidth();
+  }, [keywords]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      calculateMaxWidth();
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [keywords]);
 
 
 
   return (
-    <section className="flex flex-col items-center justify-center text-center bg-white pt-20 sm:pt-36 md:pt-44 lg:pt-52 xl:pt-56">
+    <section className="flex flex-col items-center justify-center text-center bg-white pt-40 sm:pt-36 md:pt-44 lg:pt-52 xl:pt-56">
       {/* Headline */}
               <div className="text-center px-8 sm:px-16 md:px-24 lg:px-32 xl:px-48" style={{ paddingTop: '5px', paddingBottom: '8px' }}>
                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium text-black leading-tight whitespace-nowrap">
@@ -119,10 +132,10 @@ const Hero = () => {
       </p>
 
       {/* Call to Action Button */}
-      <button className="bg-[#FCF0D1] text-black rounded-lg font-light text-base flex items-center hover:scale-105 transition-transform duration-200 shadow-lg h-8 sm:h-8 md:h-10 lg:h-11 xl:h-12 mb-2.5 sm:mb-0">
+      <button className="bg-[#FCF0D1] text-black rounded-lg font-light text-base flex items-center hover:scale-105 transition-transform duration-200 shadow-lg h-8 sm:h-8 md:h-10 lg:h-11 xl:h-12 mb-2.5 sm:mb-0 mt-4 sm:mt-0">
         {/* Logo Container */}
         <div className="flex-shrink-0 p-1.5 sm:p-1 md:p-1">
-          <div className="relative w-8 h-6 sm:w-10 sm:h-8 md:w-12 md:h-10 lg:w-14 lg:h-11 xl:w-16 xl:h-12">
+          <div className="relative w-10 h-8 sm:w-10 sm:h-8 md:w-12 md:h-10 lg:w-14 lg:h-11 xl:w-16 xl:h-12">
             <Image
               src="/images/adin_logo.svg"
               alt="ADIN Logo"
@@ -141,7 +154,7 @@ const Hero = () => {
         </div>
 
         {/* Text */}
-        <div className="flex-1 flex justify-center items-center px-0.5 sm:px-1 md:px-2 lg:px-3 xl:px-4 pr-2 sm:pr-1 md:pr-0">
+        <div className="flex-1 flex justify-center items-center px-2 sm:px-3 md:px-4 lg:px-5 xl:px-6 pr-2 sm:pr-3 md:pr-4 lg:pr-5 xl:pr-6">
           <AnimatedWaveText text="Watch the Video" className="whitespace-nowrap text-xs sm:text-xs md:text-sm lg:text-base" />
         </div>
       </button>

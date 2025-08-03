@@ -34,11 +34,11 @@ const LiveReports = () => {
           </div>
 
           {/* Company Cards */}
-          <div className="space-y-0.5 sm:space-y-1 md:space-y-1.5">
+          <div className="space-y-0.5 sm:space-y-0.5 md:space-y-1 lg:space-y-1.5">
             {companies.map((company, index) => (
                               <div
                   key={index}
-                  className="bg-white border border-gray-200 rounded-lg p-2 sm:p-3.5 md:p-4 hover:shadow-md transition-shadow cursor-pointer"
+                  className="bg-white border border-gray-200 rounded-lg p-1.5 sm:p-2.5 md:p-3 lg:p-4 hover:shadow-md transition-shadow cursor-pointer"
                 >
                   <div className="flex items-center space-x-1 sm:space-x-1.5 md:space-x-2">
                     <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 flex items-center justify-center overflow-hidden">
@@ -60,7 +60,7 @@ const LiveReports = () => {
           </div>
 
           {/* View All Link */}
-          <div className="mt-4 pb-0">
+          <div className="mt-2 sm:mt-3 md:mt-4 pb-0">
             <a
               href="#"
               className="text-black font-light hover:text-gray-700 transition-colors flex items-center justify-end text-xs"
