@@ -26,14 +26,14 @@ const Hero = () => {
     const interval = setInterval(() => {
       // Fade out the current center word first
       setCenterWordOpacity(0.6)
-      setTimeout(() => setCenterWordOpacity(0.3), 100)
+      setTimeout(() => setCenterWordOpacity(0.3), 50)
       setTimeout(() => {
         setActiveIndex((prevIndex) => (prevIndex + 1) % keywords.length)
         // Gradually fade the new center word back to full opacity
-        setTimeout(() => setCenterWordOpacity(0.6), 100)
-        setTimeout(() => setCenterWordOpacity(1), 200)
-      }, 200) // Fade out for 200ms before changing word
-    }, 1800) // Slightly longer interval with fade in/out
+        setTimeout(() => setCenterWordOpacity(0.6), 50)
+        setTimeout(() => setCenterWordOpacity(1), 100)
+      }, 50) // Fade out for 50ms before changing word
+    }, 1500) // Reduced interval for less stall time at full color
     return () => clearInterval(interval)
   }, [keywords.length])
 

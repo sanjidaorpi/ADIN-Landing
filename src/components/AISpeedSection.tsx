@@ -20,25 +20,38 @@ const AISpeedSection = () => {
     const scrollContainer = scrollContainerRef.current
     if (!scrollContainer) return
 
+    // Always start at the beginning (card 1)
+    scrollContainer.scrollLeft = 0
     const scrollWidth = scrollContainer.scrollWidth
     const clientWidth = scrollContainer.clientWidth
     let scrollPosition = 0
 
     const animateScroll = () => {
-      scrollPosition += 2 // Continuous scroll speed
+      // Slower animation to pause longer on each card
+      const isMobile = window.innerWidth < 768
+      const scrollSpeed = isMobile ? 1 : 1.5
+      scrollPosition += scrollSpeed
       
-      // When reaching the end, seamlessly continue to the duplicated cards
+      // When reaching the end, reset to the beginning for continuous loop
       if (scrollPosition >= scrollWidth - clientWidth) {
-        // Reset to the beginning of the duplicated cards (after the original set)
-        const originalCardsWidth = (scrollWidth - clientWidth) * 0.6 // Approximate width of original cards
-        scrollPosition = originalCardsWidth
+        scrollPosition = 0 // Reset to the very beginning
+        // Force immediate scroll to ensure it starts from the beginning
+        scrollContainer.scrollLeft = 0
+        return
       }
       
       scrollContainer.scrollLeft = scrollPosition
     }
 
-    const interval = setInterval(animateScroll, 20) // Animation interval
-    return () => clearInterval(interval)
+    // Start animation after a delay to ensure first card gets proper pause time
+    const startDelay = setTimeout(() => {
+      const interval = setInterval(animateScroll, 30) // Slower animation interval
+      return () => clearInterval(interval)
+    }, 1000) // 1 second delay before starting animation
+
+    return () => {
+      clearTimeout(startDelay)
+    }
   }, [])
 
   return (
@@ -58,7 +71,7 @@ const AISpeedSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-6 mb-6">
           {/* Left Card - AI Agents */}
           <motion.div 
-            className="bg-white rounded-xl border border-[#E0E0E0] pt-2 pb-4 px-4 sm:pt-6 sm:pb-8 sm:px-8 md:pt-6 md:pb-8 md:px-8 lg:pt-10 lg:pb-12 lg:px-12 h-auto min-h-[65vh] sm:min-h-[85vh] lg:min-h-[93vh] flex flex-col justify-center"
+            className="bg-white rounded-xl border border-[#E0E0E0] pt-2 pb-4 px-4 sm:pt-6 sm:pb-8 sm:px-8 md:pt-4 md:pb-6 md:px-6 lg:pt-10 lg:pb-12 lg:px-12 h-auto min-h-[65vh] sm:min-h-[85vh] lg:min-h-[93vh] flex flex-col justify-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -255,54 +268,9 @@ const AISpeedSection = () => {
 
 
 
-                       {/* Duplicate Cards for Seamless Infinite Loop */}
-                       {/* Human Card 1 - Purple (Duplicate) */}
-                       <div className="bg-gradient-to-br from-[#A97DF5]/40 to-[#A97DF5]/25 rounded-xl p-4 sm:p-6 text-black flex-shrink-0 w-[85%] snap-center h-[50vh] sm:h-[60vh] lg:h-[66vh] pb-3 backdrop-blur-sm relative overflow-hidden">
-                         {/* Ryan Hoover Image - fills entire card */}
-                         <div className="absolute inset-0">
-                           <Image
-                             src="/images/supporters/ryan_hoover.png"
-                             alt="Ryan Hoover"
-                             width={500}
-                             height={400}
-                             className="w-full h-full object-cover object-bottom sm:object-center lg:object-bottom"
-                           />
-                         </div>
-                         {/* White transparent subtitle card footer */}
-                         <div className="absolute bottom-0 left-0 right-0 bg-white/20 backdrop-blur-sm rounded-b-xl p-4 z-10">
-                           <div className="flex items-center justify-center space-x-2 px-4">
-                             <h4 className="font-semibold text-xl sm:text-2xl mb-1 text-white">Ryan Hoover</h4>
-                             <div className="bg-[#FFD800] w-4 h-4 flex items-center justify-center">
-                               <ion-icon name="checkmark" style={{ color: 'black', fontSize: '12px' }}></ion-icon>
-                             </div>
-                           </div>
-                           <p className="text-white/90 text-sm sm:text-base font-medium px-4 text-center">Founder, Product Hunt</p>
-                         </div>
-                       </div>
 
-                       {/* Human Card 2 - Yellow (Duplicate) */}
-                       <div className="bg-gradient-to-br from-[#FFD17A]/40 to-[#FFD17A]/25 rounded-xl p-4 sm:p-6 text-black flex-shrink-0 w-[85%] snap-center h-[50vh] sm:h-[60vh] lg:h-[66vh] pb-3 backdrop-blur-sm relative overflow-hidden">
-                         {/* Ryan Hoover Image - fills entire card */}
-                         <div className="absolute inset-0">
-                           <Image
-                             src="/images/supporters/ryan_hoover.png"
-                             alt="Ryan Hoover"
-                             width={500}
-                             height={400}
-                             className="w-full h-full object-cover object-bottom sm:object-center lg:object-bottom"
-                           />
-                         </div>
-                         {/* White transparent subtitle card footer */}
-                         <div className="absolute bottom-0 left-0 right-0 bg-white/20 backdrop-blur-sm rounded-b-xl p-4 z-10">
-                           <div className="flex items-center justify-center space-x-2 px-4">
-                             <h4 className="font-semibold text-xl sm:text-2xl mb-1 text-white">Ryan Hoover</h4>
-                             <div className="bg-[#FFD800] w-4 h-4 flex items-center justify-center">
-                               <ion-icon name="checkmark" style={{ color: 'black', fontSize: '12px' }}></ion-icon>
-                             </div>
-                           </div>
-                           <p className="text-white/90 text-sm sm:text-base font-medium px-4 text-center">Founder, Product Hunt</p>
-                         </div>
-                       </div>
+
+
 
                        {/* Right Spacer to balance the layout */}
                        <div className="flex-shrink-0 w-8 sm:w-10"></div>
