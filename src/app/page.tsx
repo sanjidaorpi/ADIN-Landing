@@ -150,7 +150,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="bg-white">
+    <main className="bg-white relative">
       <div className="pt-2">
         <Header />
       </div>
@@ -183,13 +183,12 @@ export default function Home() {
             />
           </div>
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white via-white/80 to-transparent pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white/60 via-white/30 to-transparent pointer-events-none"></div>
           <div className="absolute inset-0 bg-white/40 pointer-events-none"></div>
         </div>
       </div>
 
       {/* New Landing Page Sections */}
-      <div id="main-content" className="-mt-24 sm:-mt-32 md:-mt-40 lg:-mt-48 xl:-mt-48">
+      <div id="main-content" className="-mt-24 sm:-mt-32 md:-mt-40 lg:-mt-48 xl:-mt-48 relative z-20 bg-transparent">
         <div className="pt-20 sm:pt-16">
           <TopCarousel />
         </div>

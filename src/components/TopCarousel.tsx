@@ -30,8 +30,8 @@ const TopCarousel = () => {
   }, [slides.length])
 
   return (
-    <div className="pt-0 -mt-8">
-      <div className="pb-0">
+    <div className="pt-0 -mt-8 bg-transparent">
+      <div className="pb-0 bg-transparent">
         <div className="max-w-3xl mx-auto px-[15%] sm:px-6 lg:px-8 text-center">
           {/* Main Text */}
           <div className="flex items-center justify-center mb-6 sm:mb-8">
