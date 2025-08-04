@@ -169,7 +169,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Gradient starting where Hero ends */}
+      {/* Gradient starting where Hero ends - updated to fix white line */}
       <div className="relative -mt-[12rem] lg:-mt-[16rem] xl:-mt-[20rem] z-10">
         <div className="relative w-full overflow-hidden">
           <div className="pt-24 pb-16 sm:pt-8 sm:pb-8">
