@@ -9,7 +9,7 @@ const InvestmentStages = () => {
         {/* Heading */}
         <div className="text-left mb-8 sm:mb-10 md:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-gray-900 mb-6">
-            <span className="block sm:hidden whitespace-nowrap">Only Early. Always Human.</span>
+            <span className="block sm:hidden">Only Early.<br />Always Human.</span>
             <span className="hidden sm:block">Only Early.<br />Always Human.</span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-5xl leading-relaxed font-light">

@@ -59,7 +59,7 @@ const AnimatedScrollArrow = () => {
       variants={bounceVariants}
       initial="initial"
       animate="animate"
-      className={`scroll-arrow flex justify-center relative z-10 cursor-pointer transition-all duration-300 ${
+      className={`scroll-arrow flex justify-start sm:justify-center relative z-10 cursor-pointer transition-all duration-300 ${
         isAtBottom ? 'scale-110' : ''
       }`}
       onClick={scrollToMainContent}

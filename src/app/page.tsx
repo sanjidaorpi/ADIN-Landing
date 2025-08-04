@@ -162,7 +162,7 @@ export default function Home() {
           <div className="flex justify-end pr-8 relative z-10 pb-4 sm:pt-0 sm:pb-0 pt-8 sm:pt-0">
             <LiveReports />
           </div>
-          <div className="flex justify-center relative z-10 pb-4 sm:pb-0">
+          <div className="flex justify-start sm:justify-center relative z-10 pb-4 sm:pb-0 pl-8 sm:pl-0">
             <AnimatedScrollArrow />
           </div>
           <div className="h-2 sm:h-8 md:h-10 lg:h-11 xl:h-12 relative z-10"></div>
@@ -172,7 +172,7 @@ export default function Home() {
       {/* Gradient starting where Hero ends */}
       <div className="relative -mt-[12rem] lg:-mt-[16rem] xl:-mt-[20rem] z-10">
         <div className="relative w-full overflow-hidden">
-          <div className="pt-8 sm:pt-0">
+          <div className="pt-24 pb-16 sm:pt-8 sm:pb-8">
             <Image 
               src="/images/full_gradient.svg" 
               alt="Gradient" 
@@ -184,12 +184,13 @@ export default function Home() {
           </div>
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white via-white/80 to-transparent pointer-events-none"></div>
           <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white/60 via-white/30 to-transparent pointer-events-none"></div>
+          <div className="absolute inset-0 bg-white/40 pointer-events-none"></div>
         </div>
       </div>
 
       {/* New Landing Page Sections */}
       <div id="main-content" className="-mt-24 sm:-mt-32 md:-mt-40 lg:-mt-48 xl:-mt-48">
-        <div className="pt-16">
+        <div className="pt-20 sm:pt-16">
           <TopCarousel />
         </div>
         <div style={{ marginLeft: '9%', marginRight: '9%' }}>

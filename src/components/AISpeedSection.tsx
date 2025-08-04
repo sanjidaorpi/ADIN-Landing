@@ -1,12 +1,11 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 const AISpeedSection = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
-  const [isPaused, setIsPaused] = useState(false)
 
   const aiAgents = [
     { name: 'The Network Hunter', description: 'Find the crowd, fuel the movement.', icon: '/images/agent_yellow.svg' },
@@ -16,7 +15,7 @@ const AISpeedSection = () => {
     { name: 'The Value Guy', description: 'Seeking hidden gems for lasting growth.', icon: '/images/agent_purple.svg' },
   ]
 
-  // Infinite scroll functionality
+  // Infinite scroll functionality without scroll interference
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current
     if (!scrollContainer) return
@@ -26,9 +25,7 @@ const AISpeedSection = () => {
     let scrollPosition = 0
 
     const animateScroll = () => {
-      if (isPaused) return // Don't animate if paused
-      
-      scrollPosition += 2 // Faster continuous scroll
+      scrollPosition += 2 // Continuous scroll speed
       
       // When reaching the end, seamlessly continue to the duplicated cards
       if (scrollPosition >= scrollWidth - clientWidth) {
@@ -40,9 +37,9 @@ const AISpeedSection = () => {
       scrollContainer.scrollLeft = scrollPosition
     }
 
-    const interval = setInterval(animateScroll, 20) // Faster animation interval
+    const interval = setInterval(animateScroll, 20) // Animation interval
     return () => clearInterval(interval)
-  }, [isPaused])
+  }, [])
 
   return (
     <section className="bg-white pt-16 pb-6 sm:pt-32 sm:pb-10 md:pt-40 md:pb-12 lg:pt-48 lg:pb-16">
@@ -61,7 +58,7 @@ const AISpeedSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-6 mb-6">
           {/* Left Card - AI Agents */}
           <motion.div 
-            className="bg-white rounded-xl border border-[#E0E0E0] pt-2 pb-4 px-4 sm:pt-4 sm:pb-6 sm:px-6 md:pt-6 md:pb-8 md:px-8 lg:pt-10 lg:pb-12 lg:px-12 h-auto min-h-[65vh] sm:min-h-[85vh] lg:min-h-[93vh] flex flex-col justify-center"
+            className="bg-white rounded-xl border border-[#E0E0E0] pt-2 pb-4 px-4 sm:pt-6 sm:pb-8 sm:px-8 md:pt-6 md:pb-8 md:px-8 lg:pt-10 lg:pb-12 lg:px-12 h-auto min-h-[65vh] sm:min-h-[85vh] lg:min-h-[93vh] flex flex-col justify-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -101,7 +98,7 @@ const AISpeedSection = () => {
 
                            {/* Right Card - Humans */}
                  <motion.div 
-                   className="bg-white rounded-xl border border-[#E0E0E0] pt-2 pb-4 px-4 sm:pt-6 sm:pb-8 sm:px-8 lg:pt-10 lg:pb-12 lg:px-12 relative overflow-hidden h-[65vh] sm:h-[85vh] lg:h-[93vh]"
+                   className="bg-white rounded-xl border border-[#E0E0E0] pt-2 pb-4 px-4 sm:pt-6 sm:pb-8 sm:px-8 lg:pt-10 lg:pb-12 lg:px-12 relative overflow-hidden h-auto min-h-[65vh] sm:min-h-[85vh] lg:min-h-[93vh]"
                    initial={{ opacity: 0, y: 20 }}
                    whileInView={{ opacity: 1, y: 0 }}
                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
@@ -116,22 +113,27 @@ const AISpeedSection = () => {
                      <div 
                        ref={scrollContainerRef} 
                        className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory gap-4 h-full" 
-                       style={{ scrollBehavior: 'smooth', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                       onWheel={(e) => {
-                         e.stopPropagation()
-                         setIsPaused(true)
-                         // Resume animation after 3 seconds of no interaction
-                         setTimeout(() => setIsPaused(false), 3000)
+                       style={{ 
+                         scrollBehavior: 'smooth', 
+                         scrollbarWidth: 'none', 
+                         msOverflowStyle: 'none',
+                         pointerEvents: 'none',
+                         userSelect: 'none',
+                         WebkitUserSelect: 'none',
+                         MozUserSelect: 'none'
                        }}
-                       onTouchStart={() => setIsPaused(true)}
-                       onTouchEnd={() => {
-                         setTimeout(() => setIsPaused(false), 3000)
-                       }}
+                       onWheel={(e) => e.preventDefault()}
+                       onTouchStart={(e) => e.preventDefault()}
+                       onTouchMove={(e) => e.preventDefault()}
+                       onTouchEnd={(e) => e.preventDefault()}
+                       onMouseDown={(e) => e.preventDefault()}
+                       onMouseMove={(e) => e.preventDefault()}
+                       onMouseUp={(e) => e.preventDefault()}
                      >
                        {/* Left Spacer to center card 2 initially */}
                        <div className="flex-shrink-0 w-8 sm:w-10"></div>
 
-                                              {/* Human Card 1 - Purple */}
+                       {/* Human Card 1 - Purple */}
                        <div className="bg-gradient-to-br from-[#A97DF5]/40 to-[#A97DF5]/25 rounded-xl p-4 sm:p-6 text-black flex-shrink-0 w-[85%] snap-center h-[50vh] sm:h-[60vh] lg:h-[66vh] pb-3 backdrop-blur-sm relative overflow-hidden">
                          {/* Ryan Hoover Image - fills entire card */}
                          <div className="absolute inset-0">
@@ -155,7 +157,7 @@ const AISpeedSection = () => {
                          </div>
                        </div>
 
-                       {/* Human Card 2 - Yellow (Centered initially) */}
+                       {/* Human Card 2 - Yellow */}
                        <div className="bg-gradient-to-br from-[#FFD17A]/40 to-[#FFD17A]/25 rounded-xl p-4 sm:p-6 text-black flex-shrink-0 w-[85%] snap-center h-[50vh] sm:h-[60vh] lg:h-[66vh] pb-3 backdrop-blur-sm relative overflow-hidden">
                          {/* Ryan Hoover Image - fills entire card */}
                          <div className="absolute inset-0">
@@ -251,7 +253,9 @@ const AISpeedSection = () => {
                          </div>
                        </div>
 
-                       {/* Duplicate Cards for Seamless Infinite Scroll */}
+
+
+                       {/* Duplicate Cards for Seamless Infinite Loop */}
                        {/* Human Card 1 - Purple (Duplicate) */}
                        <div className="bg-gradient-to-br from-[#A97DF5]/40 to-[#A97DF5]/25 rounded-xl p-4 sm:p-6 text-black flex-shrink-0 w-[85%] snap-center h-[50vh] sm:h-[60vh] lg:h-[66vh] pb-3 backdrop-blur-sm relative overflow-hidden">
                          {/* Ryan Hoover Image - fills entire card */}
