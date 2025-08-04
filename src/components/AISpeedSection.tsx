@@ -26,25 +26,45 @@ const AISpeedSection = () => {
     const clientWidth = scrollContainer.clientWidth
     let scrollPosition = 0
 
+    let isPaused = false
+    let isReversing = false
+
     const animateScroll = () => {
+      if (isPaused) return // Don't animate if paused
+      
       // Quick sweep animation for mobile
       const isMobile = window.innerWidth < 768
-      const scrollSpeed = isMobile ? 3 : 2
-      scrollPosition += scrollSpeed
+      const scrollSpeed = isMobile ? 2 : 1.5
       
-      // When reaching the end, reset to the beginning for continuous loop
-      if (scrollPosition >= scrollWidth - clientWidth) {
-        scrollPosition = 0 // Reset to the very beginning
-        // Force immediate scroll to ensure it starts from the beginning
-        scrollContainer.scrollLeft = 0
-        return
+      if (isReversing) {
+        // Moving right to left
+        scrollPosition -= scrollSpeed
+        if (scrollPosition <= 0) {
+          isPaused = true // Pause the animation
+          setTimeout(() => {
+            isReversing = false // Start moving left to right again
+            isPaused = false // Resume animation
+          }, 1000) // 1 second pause at the beginning
+          return
+        }
+      } else {
+        // Moving left to right
+        scrollPosition += scrollSpeed
+        if (scrollPosition >= scrollWidth - clientWidth) {
+          isPaused = true // Pause the animation
+          setTimeout(() => {
+            isReversing = true // Start moving right to left
+            isPaused = false // Resume animation
+          }, 1000) // 1 second pause at the end
+          return
+        }
       }
       
       scrollContainer.scrollLeft = scrollPosition
     }
 
     // Start animation immediately for quick sweep
-    const interval = setInterval(animateScroll, 16) // Faster animation interval (60fps)
+    const interval = setInterval(animateScroll, 20) // Slightly slower for smoother animation
 
     return () => {
       clearInterval(interval)
@@ -271,6 +291,127 @@ const AISpeedSection = () => {
 
                        {/* Right Spacer to balance the layout */}
                        <div className="flex-shrink-0 w-8 sm:w-10"></div>
+
+                       {/* Duplicated Cards for Seamless Loop */}
+                       {/* Human Card 1 - Purple (Duplicate) */}
+                       <div className="bg-gradient-to-br from-[#A97DF5]/40 to-[#A97DF5]/25 rounded-xl p-4 sm:p-6 text-black flex-shrink-0 w-[85%] snap-center h-[50vh] sm:h-[60vh] lg:h-[66vh] pb-3 backdrop-blur-sm relative overflow-hidden">
+                         {/* Ryan Hoover Image - fills entire card */}
+                         <div className="absolute inset-0">
+                           <Image
+                             src="/images/supporters/ryan_hoover.png"
+                             alt="Ryan Hoover"
+                             width={500}
+                             height={400}
+                             className="w-full h-full object-cover object-bottom sm:object-center lg:object-bottom"
+                           />
+                         </div>
+                         {/* White transparent subtitle card footer */}
+                         <div className="absolute bottom-0 left-0 right-0 bg-white/20 backdrop-blur-sm rounded-b-xl p-4 z-10">
+                           <div className="flex items-center justify-center space-x-2 px-4">
+                             <h4 className="font-semibold text-xl sm:text-2xl mb-1 text-white">Ryan Hoover</h4>
+                             <div className="bg-[#FFD800] w-4 h-4 flex items-center justify-center">
+                               <ion-icon name="checkmark" style={{ color: 'black', fontSize: '12px' }}></ion-icon>
+                             </div>
+                           </div>
+                           <p className="text-white/90 text-sm sm:text-base font-medium px-4 text-center">Founder, Product Hunt</p>
+                         </div>
+                       </div>
+
+                       {/* Human Card 2 - Yellow (Duplicate) */}
+                       <div className="bg-gradient-to-br from-[#FFD17A]/40 to-[#FFD17A]/25 rounded-xl p-4 sm:p-6 text-black flex-shrink-0 w-[85%] snap-center h-[50vh] sm:h-[60vh] lg:h-[66vh] pb-3 backdrop-blur-sm relative overflow-hidden">
+                         {/* Ryan Hoover Image - fills entire card */}
+                         <div className="absolute inset-0">
+                           <Image
+                             src="/images/supporters/ryan_hoover.png"
+                             alt="Ryan Hoover"
+                             width={500}
+                             height={400}
+                             className="w-full h-full object-cover object-bottom sm:object-center lg:object-bottom"
+                           />
+                         </div>
+                         {/* White transparent subtitle card footer */}
+                         <div className="absolute bottom-0 left-0 right-0 bg-white/20 backdrop-blur-sm rounded-b-xl p-4 z-10">
+                           <div className="flex items-center justify-center space-x-2 px-4">
+                             <h4 className="font-semibold text-xl sm:text-2xl mb-1 text-white">Ryan Hoover</h4>
+                             <div className="bg-[#FFD800] w-4 h-4 flex items-center justify-center">
+                               <ion-icon name="checkmark" style={{ color: 'black', fontSize: '12px' }}></ion-icon>
+                             </div>
+                           </div>
+                           <p className="text-white/90 text-sm sm:text-base font-medium px-4 text-center">Founder, Product Hunt</p>
+                         </div>
+                       </div>
+
+                       {/* Human Card 3 - Green (Duplicate) */}
+                       <div className="bg-gradient-to-br from-[#5ED890]/40 to-[#5ED890]/25 rounded-xl p-4 sm:p-6 text-black flex-shrink-0 w-[85%] snap-center h-[50vh] sm:h-[60vh] lg:h-[66vh] pb-3 backdrop-blur-sm relative overflow-hidden">
+                         {/* Ryan Hoover Image - fills entire card */}
+                         <div className="absolute inset-0">
+                           <Image
+                             src="/images/supporters/ryan_hoover.png"
+                             alt="Ryan Hoover"
+                             width={500}
+                             height={400}
+                             className="w-full h-full object-cover object-bottom sm:object-center lg:object-bottom"
+                           />
+                         </div>
+                         {/* White transparent subtitle card footer */}
+                         <div className="absolute bottom-0 left-0 right-0 bg-white/20 backdrop-blur-sm rounded-b-xl p-4 z-10">
+                           <div className="flex items-center justify-center space-x-2 px-4">
+                             <h4 className="font-semibold text-xl sm:text-2xl mb-1 text-white">Ryan Hoover</h4>
+                             <div className="bg-[#FFD800] w-4 h-4 flex items-center justify-center">
+                               <ion-icon name="checkmark" style={{ color: 'black', fontSize: '12px' }}></ion-icon>
+                             </div>
+                           </div>
+                           <p className="text-white/90 text-sm sm:text-base font-medium px-4 text-center">Founder, Product Hunt</p>
+                         </div>
+                       </div>
+
+                       {/* Human Card 4 - Blue (Duplicate) */}
+                       <div className="bg-gradient-to-br from-[#4A90E2]/40 to-[#4A90E2]/25 rounded-xl p-4 sm:p-6 text-black flex-shrink-0 w-[85%] snap-center h-[50vh] sm:h-[60vh] lg:h-[66vh] pb-3 backdrop-blur-sm relative overflow-hidden">
+                         {/* Ryan Hoover Image - fills entire card */}
+                         <div className="absolute inset-0">
+                           <Image
+                             src="/images/supporters/ryan_hoover.png"
+                             alt="Ryan Hoover"
+                             width={500}
+                             height={400}
+                             className="w-full h-full object-cover object-bottom sm:object-center lg:object-bottom"
+                           />
+                         </div>
+                         {/* White transparent subtitle card footer */}
+                         <div className="absolute bottom-0 left-0 right-0 bg-white/20 backdrop-blur-sm rounded-b-xl p-4 z-10">
+                           <div className="flex items-center justify-center space-x-2 px-4">
+                             <h4 className="font-semibold text-xl sm:text-2xl mb-1 text-white">Ryan Hoover</h4>
+                             <div className="bg-[#FFD800] w-4 h-4 flex items-center justify-center">
+                               <ion-icon name="checkmark" style={{ color: 'black', fontSize: '12px' }}></ion-icon>
+                             </div>
+                           </div>
+                           <p className="text-white/90 text-sm sm:text-base font-medium px-4 text-center">Founder, Product Hunt</p>
+                         </div>
+                       </div>
+
+                       {/* Human Card 5 - Red (Duplicate) */}
+                       <div className="bg-gradient-to-br from-[#FF6B6B]/40 to-[#FF6B6B]/25 rounded-xl p-4 sm:p-6 text-black flex-shrink-0 w-[85%] snap-center h-[50vh] sm:h-[60vh] lg:h-[66vh] pb-3 backdrop-blur-sm relative overflow-hidden">
+                         {/* Ryan Hoover Image - fills entire card */}
+                         <div className="absolute inset-0">
+                           <Image
+                             src="/images/supporters/ryan_hoover.png"
+                             alt="Ryan Hoover"
+                             width={500}
+                             height={400}
+                             className="w-full h-full object-cover object-bottom sm:object-center lg:object-bottom"
+                           />
+                         </div>
+                         {/* White transparent subtitle card footer */}
+                         <div className="absolute bottom-0 left-0 right-0 bg-white/20 backdrop-blur-sm rounded-b-xl p-4 z-10">
+                           <div className="flex items-center justify-center space-x-2 px-4">
+                             <h4 className="font-semibold text-xl sm:text-2xl mb-1 text-white">Ryan Hoover</h4>
+                             <div className="bg-[#FFD800] w-4 h-4 flex items-center justify-center">
+                               <ion-icon name="checkmark" style={{ color: 'black', fontSize: '12px' }}></ion-icon>
+                             </div>
+                           </div>
+                           <p className="text-white/90 text-sm sm:text-base font-medium px-4 text-center">Founder, Product Hunt</p>
+                         </div>
+                       </div>
                      </div>
                    </div>
                  </motion.div>

@@ -67,9 +67,9 @@ const InvestCTA = () => {
               {/* Right Segment - Get Started Button */}
               <a 
                 href="/get-started" 
-                className="bg-[#A97DF5] hover:bg-purple-500 text-white px-3 py-2 mx-0.5 my-0.5 sm:px-6 sm:py-3 sm:mx-1 sm:my-1 flex items-center transition-colors font-light text-xs sm:text-sm md:text-base rounded-full"
+                className="bg-[#A97DF5] hover:bg-purple-500 text-white px-2 py-2 mx-0.5 my-0.5 sm:px-6 sm:py-3 sm:mx-1 sm:my-1 flex items-center transition-colors font-light text-xs sm:text-sm md:text-base rounded-full whitespace-nowrap"
               >
-                <span>Get Started</span><span className="ml-1 sm:ml-2 flex items-center"><ion-icon name="arrow-forward"></ion-icon></span>
+                <span className="text-xs sm:text-sm md:text-base">Get Started</span><span className="ml-1 sm:ml-2 flex items-center"><ion-icon name="arrow-forward"></ion-icon></span>
               </a>
             </div>
           </div>
