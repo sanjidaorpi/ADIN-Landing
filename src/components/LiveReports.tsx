@@ -29,7 +29,15 @@ const LiveReports = () => {
       <div className="bg-transparent rounded-l-2xl px-1 sm:px-1.5 md:px-2 lg:px-3 xl:px-4 w-48 sm:w-64 md:w-80 lg:w-96 xl:w-112 pb-0 -mb-8 sm:-mb-8 md:-mb-8 lg:-mb-8 xl:-mb-8" style={{ minWidth: '192px' }}>
         {/* Header */}
         <div className="flex items-center space-x-1 sm:space-x-1.5 md:space-x-2 mb-1 sm:mb-2 md:mb-2.5">
-            <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full"></div>
+            <div className="relative">
+              <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <div 
+                className="absolute inset-0 w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-green-400 rounded-full opacity-75"
+                style={{
+                  animation: 'expand-shrink 4s ease-in-out infinite'
+                }}
+              ></div>
+            </div>
             <h2 className="text-xs sm:text-sm md:text-base font-light text-gray-800 whitespace-nowrap">Live Reports</h2>
           </div>
 
