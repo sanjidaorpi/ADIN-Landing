@@ -172,7 +172,7 @@ export default function Home() {
       {/* Gradient starting where Hero ends - updated to fix white line */}
       <div className="relative -mt-[12rem] lg:-mt-[16rem] xl:-mt-[20rem] z-10">
         <div className="relative w-full overflow-hidden">
-          <div className="pt-24 pb-16 sm:pt-8 sm:pb-8">
+          <div className="pt-20 pb-12 sm:pt-8 sm:pb-8">
             <Image 
               src="/images/full_gradient.svg" 
               alt="Gradient" 
@@ -183,7 +183,7 @@ export default function Home() {
             />
           </div>
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white via-white/80 to-transparent pointer-events-none"></div>
-          <div className="absolute inset-0 bg-white/40 pointer-events-none"></div>
+          <div className="absolute inset-0 bg-white/20 sm:bg-white/40 pointer-events-none"></div>
         </div>
       </div>
 

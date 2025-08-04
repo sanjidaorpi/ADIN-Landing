@@ -27,9 +27,9 @@ const AISpeedSection = () => {
     let scrollPosition = 0
 
     const animateScroll = () => {
-      // Slower animation to pause longer on each card
+      // Quick sweep animation for mobile
       const isMobile = window.innerWidth < 768
-      const scrollSpeed = isMobile ? 1 : 1.5
+      const scrollSpeed = isMobile ? 3 : 2
       scrollPosition += scrollSpeed
       
       // When reaching the end, reset to the beginning for continuous loop
@@ -43,14 +43,11 @@ const AISpeedSection = () => {
       scrollContainer.scrollLeft = scrollPosition
     }
 
-    // Start animation after a delay to ensure first card gets proper pause time
-    const startDelay = setTimeout(() => {
-      const interval = setInterval(animateScroll, 30) // Slower animation interval
-      return () => clearInterval(interval)
-    }, 1000) // 1 second delay before starting animation
+    // Start animation immediately for quick sweep
+    const interval = setInterval(animateScroll, 16) // Faster animation interval (60fps)
 
     return () => {
-      clearTimeout(startDelay)
+      clearInterval(interval)
     }
   }, [])
 
