@@ -1,11 +1,31 @@
 # ADIN Landing Page
 
-Build Notes:
+Build Notes
 
-Decisions I'm proud of: I spent a lot of time considering how the animation on the multicolor tag should look. I went back and forth between different animations types all using a sliding carousel approach. Although the spacing between each word doesn't match exactly to the design, upon many different iterations I decided that to achieve the centering effect on one word at a time it looked best to add this space instead of having the words jitter left and right or not be exactly centered. Between the many different iteration of animations I tried out, i think this is the most satisfying! But I'm very curious as to how other feel about it and would love to get user feddback to adjust the feel/softness of that effect. I am also proud of the other animations which apply a gradient sweep effect on some text which I think came out quite nice after a bunch of tweaking on speed and size. On desktop view I achieved a close clone of the design I would say, which I'm proud of.
+Decisions I'm Proud Of:
+One of the most thoughtfully developed elements was the animation on the multicolor tag. I explored multiple animation styles, using a sliding carousel approach. While the final spacing between words does not match the original design exactly, I determined that a slightly adjusted spacing provided the best centering effect and visual consistency. Approaches that adhered strictly to the Figma spacing often caused jitter or misalignment, which negatively impacted the overall feel. After multiple iterations, this current version felt the most balanced and visually smooth but I am curious to see what other think of the other animations like sliding between words and less fade time.
 
-Tradeoffs: Like I mentioned above, the spacing between the words on the colored tags was a tradeoff I made to land a more seamless/soft look as it was jittery or uncentered in approaches that matched the Figma design spacing exactly. Additionally, the navigation bar which I created a separate layout for for on mobile layout, there could be another way of getting a small naigation bar instead of switching to a drop down potentially.
+I also spent time refining the gradient sweep animations on select text elements. After experimenting with timing and scale, I was able to create a transition that feels responsive and polished. 
 
-Fast Follows: Making the responsiveness to different screen sizes smoother if possible and changing the mobile layout a bit, specifically the navigation layout and maybe changing the hamburger option based on feedback and what others think of it. I'm currently working on making the space above the live reports smaller on mobile view but I could see that maybe not being shown on mobile view at all or requiring a button click to pop up / lead to another page. I would love to make adjustments on the responsiveness based on feedback from design.
+On desktop view, I believe the design closely matches the intended spec and performs well.
 
-Overall, I'd love any/all feedback on these choices and I appreciate it in advance!!!
+Tradeoffs:
+To achieve smoother motion in the multicolor tag animation, I intentionally deviated from the exact design spacing. This decision was made to avoid jittering or misalignment during animation, which occurred when using strict word spacing. The result is a more stable and visually appealing effect, at the cost of precise spacing fidelity.
+
+Another tradeoff involves the rainbow gradient under the hero section on mobile devices. The animation occasionally misaligns or jumps on smaller screens. I am considering removing it from the mobile view to ensure a smoother transition and cleaner experience.
+
+Fast Follows:
+Improve responsiveness across screen sizes, particularly:
+
+Refining layout under the hero section
+
+Adjusting spacing and positioning around the "Live Reports" tab on mobile
+
+Update the Supported by Humans card:
+
+Currently, all cards display Ryan Hoover as a placeholder to demonstrate animation functionality. These will be updated with accurate supporter data if I can have access to those details.
+
+Replace placeholder content in the FAQ section:
+One of the answers I didn't find on the current live site so I need the details to update that.
+
+Continue testing and adjusting layout and animations based on user feedback, with a focus on improving the fluidity of the multicolor tag and refining mobile interactions.
