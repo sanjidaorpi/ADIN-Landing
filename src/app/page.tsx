@@ -156,7 +156,7 @@ export default function Home() {
       </div>
       
       {/* Original Hero Section */}
-      <div id="hero-section" className="relative min-h-screen flex flex-col z-20">
+      <div id="hero-section" className="relative min-h-[80vh] sm:min-h-screen flex flex-col z-20">
         <Hero />
         <div className="relative flex-1 flex flex-col justify-end">
           <div className="flex justify-end pr-8 relative z-10 pb-4 sm:pt-0 sm:pb-0 pt-8 sm:pt-0">

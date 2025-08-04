@@ -75,7 +75,7 @@ const Hero = () => {
 
 
   return (
-    <section className="flex flex-col items-center justify-center text-center bg-white pt-40 sm:pt-36 md:pt-44 lg:pt-52 xl:pt-56">
+    <section className="flex flex-col items-center justify-center text-center bg-white pt-20 sm:pt-36 md:pt-44 lg:pt-52 xl:pt-56">
       {/* Headline */}
               <div className="text-center px-8 sm:px-16 md:px-24 lg:px-32 xl:px-48" style={{ paddingTop: '5px', paddingBottom: '8px' }}>
                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium text-black leading-tight whitespace-nowrap">
