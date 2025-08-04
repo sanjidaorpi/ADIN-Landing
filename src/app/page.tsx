@@ -65,8 +65,27 @@ export default function Home() {
                   // Calculate position above the main content (different for mobile)
         const mainContentTop = mainContent.offsetTop
         const isMobile = window.innerWidth < 768 // md breakpoint
-        const offset = isMobile ? 0 : viewportHeight * 0.15 // 0 on mobile (top of screen), 15vh on desktop
-        const targetPosition = mainContentTop - offset
+        
+        let targetPosition: number
+        
+        if (isMobile) {
+          // On mobile, position the middle of the gradient image at the top of the window
+          const gradientImage = document.querySelector('img[src="/images/full_gradient.svg"]') as HTMLImageElement
+          if (gradientImage) {
+            const gradientRect = gradientImage.getBoundingClientRect()
+            const gradientTop = gradientImage.offsetTop
+            const gradientHeight = gradientRect.height
+            const gradientMiddle = gradientTop + (gradientHeight / 2)
+            targetPosition = gradientMiddle
+          } else {
+            // Fallback if image not found
+            targetPosition = mainContentTop - 100
+          }
+        } else {
+          // Desktop behavior unchanged
+          const offset = viewportHeight * 0.15
+          targetPosition = mainContentTop - offset
+        }
           
           // Jump to position above main content (25vh on mobile, 15vh on desktop)
           window.scrollTo({
@@ -164,6 +183,7 @@ export default function Home() {
             />
           </div>
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white via-white/80 to-transparent pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white/60 via-white/30 to-transparent pointer-events-none"></div>
         </div>
       </div>
 
@@ -190,6 +210,7 @@ export default function Home() {
           className="w-full h-auto object-contain" 
           priority
         />
+        <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-white/60 via-white/30 to-transparent pointer-events-none"></div>
       </div>
       
       <Footer />

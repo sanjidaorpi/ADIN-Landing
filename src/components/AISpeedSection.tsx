@@ -61,13 +61,13 @@ const AISpeedSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-6 mb-6">
           {/* Left Card - AI Agents */}
           <motion.div 
-            className="bg-white rounded-xl border border-[#E0E0E0] pt-2 pb-4 px-4 sm:pt-6 sm:pb-8 sm:px-8 lg:pt-10 lg:pb-12 lg:px-12 h-[65vh] sm:h-[85vh] lg:h-[93vh] flex flex-col justify-center"
+            className="bg-white rounded-xl border border-[#E0E0E0] pt-2 pb-4 px-4 sm:pt-4 sm:pb-6 sm:px-6 md:pt-6 md:pb-8 md:px-8 lg:pt-10 lg:pb-12 lg:px-12 h-auto min-h-[65vh] sm:min-h-[85vh] lg:min-h-[93vh] flex flex-col justify-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ margin: "-50px" }}
           >
-            <div className="mb-6 sm:mb-8">
+            <div className="mb-4 sm:mb-6 md:mb-8">
               <p className="text-base sm:text-lg lg:text-xl text-black mb-1 sm:mb-2 font-semibold">Powered by</p>
               <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold text-gray-900">AI Agents</h3>
             </div>
@@ -105,7 +105,7 @@ const AISpeedSection = () => {
                    initial={{ opacity: 0, y: 20 }}
                    whileInView={{ opacity: 1, y: 0 }}
                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-                   viewport={{ once: true, margin: "-50px" }}
+                   viewport={{ margin: "-50px" }}
                  >
                    <div className="mb-6 sm:mb-8">
                      <p className="text-base sm:text-lg lg:text-xl text-black mb-1 sm:mb-2 font-semibold">Supported by</p>
@@ -140,7 +140,7 @@ const AISpeedSection = () => {
                              alt="Ryan Hoover"
                              width={500}
                              height={400}
-                             className="w-full h-full object-cover object-bottom"
+                             className="w-full h-full object-cover object-bottom sm:object-center lg:object-bottom"
                            />
                          </div>
                          {/* White transparent subtitle card footer */}
@@ -164,7 +164,7 @@ const AISpeedSection = () => {
                              alt="Ryan Hoover"
                              width={500}
                              height={400}
-                             className="w-full h-full object-cover object-bottom"
+                             className="w-full h-full object-cover object-bottom sm:object-center lg:object-bottom"
                            />
                          </div>
                          {/* White transparent subtitle card footer */}
@@ -188,7 +188,7 @@ const AISpeedSection = () => {
                              alt="Ryan Hoover"
                              width={500}
                              height={400}
-                             className="w-full h-full object-cover object-bottom"
+                             className="w-full h-full object-cover object-bottom sm:object-center lg:object-bottom"
                            />
                          </div>
                          {/* White transparent subtitle card footer */}
@@ -212,7 +212,7 @@ const AISpeedSection = () => {
                              alt="Ryan Hoover"
                              width={500}
                              height={400}
-                             className="w-full h-full object-cover object-bottom"
+                             className="w-full h-full object-cover object-bottom sm:object-center lg:object-bottom"
                            />
                          </div>
                          {/* White transparent subtitle card footer */}
@@ -236,7 +236,7 @@ const AISpeedSection = () => {
                              alt="Ryan Hoover"
                              width={500}
                              height={400}
-                             className="w-full h-full object-cover object-bottom"
+                             className="w-full h-full object-cover object-bottom sm:object-center lg:object-bottom"
                            />
                          </div>
                          {/* White transparent subtitle card footer */}
@@ -261,7 +261,7 @@ const AISpeedSection = () => {
                              alt="Ryan Hoover"
                              width={500}
                              height={400}
-                             className="w-full h-full object-cover object-bottom"
+                             className="w-full h-full object-cover object-bottom sm:object-center lg:object-bottom"
                            />
                          </div>
                          {/* White transparent subtitle card footer */}
@@ -285,7 +285,7 @@ const AISpeedSection = () => {
                              alt="Ryan Hoover"
                              width={500}
                              height={400}
-                             className="w-full h-full object-cover object-bottom"
+                             className="w-full h-full object-cover object-bottom sm:object-center lg:object-bottom"
                            />
                          </div>
                          {/* White transparent subtitle card footer */}

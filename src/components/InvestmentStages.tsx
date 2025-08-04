@@ -27,7 +27,7 @@ const InvestmentStages = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ margin: "-50px", amount: 0.3 }}
             >
               <div className="absolute left-0 top-0 bottom-1 w-px bg-gray-200">
                 <div className="absolute top-10 left-0 right-0 h-8 bg-[#A97DF5]"></div>
@@ -49,7 +49,7 @@ const InvestmentStages = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ margin: "-50px", amount: 0.3 }}
             >
               <div className="absolute left-0 top-0 bottom-1 w-px bg-gray-200">
                 <div className="absolute top-10 left-0 right-0 h-8 bg-[#49C17A]"></div>
@@ -73,7 +73,7 @@ const InvestmentStages = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ margin: "-50px", amount: 0.3 }}
             >
               <div className="absolute left-0 top-0 bottom-1 w-px bg-gray-200">
                 <div className="absolute top-10 left-0 right-0 h-8 bg-[#A97DF5]"></div>
